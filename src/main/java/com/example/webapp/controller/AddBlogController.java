@@ -54,7 +54,7 @@ public class AddBlogController {
     @PostMapping("/add")
     public String addPost(@ModelAttribute("blog") @Valid Blog blog,
                           BindingResult error,
-                          @RequestParam("file") MultipartFile multipartFile, @ModelAttribute Category category,
+                          @RequestParam("file") MultipartFile multipartFile,
                           Model model) throws IOException {
         if(error.hasErrors() || multipartFile.isEmpty()){
             model.addAttribute("blog",blog);
@@ -64,7 +64,6 @@ public class AddBlogController {
         blog.setCategoryList(categoryService.categoryData());
         fileUpload.uploadSingle(multipartFile);
         System.out.println(blog.getCategoryList());
-        System.out.println(category);
         return "redirect:/add";
     }
 }
