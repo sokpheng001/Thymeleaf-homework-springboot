@@ -13,7 +13,8 @@
     <div class="container mt-4">
         <a type="button" th:href="@{/add}">
             <button type="button" class="btn btn-outline-secondary mb-4">Go adding Blog</button>
-        </a>
+        </a><br>
+        Block: <span th:text="${data.size()}" class="mb-4 text-end text-dark font-monospace"></span>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3  row-cols-xl-4 g-5">
             <div class="col" th:each="dates:${data}" th:object="${dates}">
                 <div th:replace="~{fragments/card::card(${dates.getTitle()}, ${dates.getAuthor()},${dates.getDescription()},${dates.getThumbnail()},${size},${categories.get(0).getCategory()})}"></div>
